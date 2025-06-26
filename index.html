@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Партнерская программа Альфа-Банк × LinkVideo</title>
+    
+    <!-- SEO мета-теги -->
+    <meta name="description" content="Партнерская программа Альфа-Банк × LinkVideo. Зарабатывайте на привлечении клиентов для банковских услуг. Выгодные условия для вашего бизнеса.">
+    <meta name="keywords" content="партнерская программа, альфа банк, linkvideo, заработок, бизнес">
+    <meta name="author" content="LinkVideo">
+    
+    <!-- Open Graph для соцсетей -->
+    <meta property="og:title" content="Партнерская программа Альфа-Банк × LinkVideo">
+    <meta property="og:description" content="Зарабатывайте вместе с Альфа-Банком на привлечении клиентов">
+    <meta property="og:type" content="website">
+    
     <style>
         * {
             margin: 0;
@@ -62,6 +73,17 @@
             }
         }
 
+        /* Accessibility: Уменьшение движения для пользователей с vestibular disorders */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
         /* Hero Section */
         .hero {
             background: var(--gradient-dark);
@@ -81,6 +103,7 @@
             height: 200%;
             background: radial-gradient(circle, rgba(239,49,36,0.1) 0%, transparent 70%);
             animation: float 20s ease-in-out infinite;
+            will-change: transform;
         }
 
         .container {
@@ -116,6 +139,7 @@
 
         .logo:hover {
             transform: translateY(-5px);
+            will-change: transform;
         }
 
         .logo img {
@@ -148,11 +172,18 @@
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(239,49,36,0.3);
             animation: pulse 2s ease-in-out infinite;
+            min-height: 44px; /* Touch target optimization */
+            min-width: 44px;
         }
 
         .cta-button:hover {
             transform: scale(1.05);
             box-shadow: 0 15px 40px rgba(239,49,36,0.5);
+        }
+
+        .cta-button:focus {
+            outline: 3px solid var(--accent-yellow);
+            outline-offset: 2px;
         }
 
         /* Steps Section */
@@ -219,6 +250,7 @@
         .step-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            will-change: transform;
         }
 
         .step-number {
@@ -386,12 +418,6 @@
         .feature-icon {
             color: var(--primary-red);
             font-size: 1.2rem;
-        }
-
-        /* Script Section */
-        .script-section {
-            padding: 100px 0;
-            background: white;
         }
 
         /* Application Section */
@@ -594,10 +620,20 @@
             align-items: center;
             transition: all 0.3s ease;
             font-weight: bold;
+            border: none;
+            color: white;
+            width: 100%;
+            text-align: left;
+            min-height: 44px; /* Touch target optimization */
         }
 
         .faq-question:hover {
             background: rgba(255,255,255,0.2);
+        }
+
+        .faq-question:focus {
+            outline: 3px solid var(--accent-yellow);
+            outline-offset: 2px;
         }
 
         .faq-answer {
@@ -605,6 +641,9 @@
             display: none;
             line-height: 1.8;
             opacity: 0.9;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
         }
 
         .faq-answer.active {
@@ -654,11 +693,17 @@
             display: inline-block;
             transition: all 0.3s ease;
             animation: pulse 2s ease-in-out infinite;
+            min-height: 44px; /* Touch target optimization */
         }
 
         .cta-button-white:hover {
             transform: scale(1.05);
             box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .cta-button-white:focus {
+            outline: 3px solid var(--accent-yellow);
+            outline-offset: 2px;
         }
 
         /* Responsive */
@@ -696,16 +741,33 @@
             }
         }
 
+        @media (max-width: 480px) {
+            .hero-subtitle {
+                font-size: 1rem;
+                line-height: 1.4;
+            }
+            
+            .step-card,
+            .benefit-card {
+                padding: 20px;
+            }
+            
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1rem;
+            }
+        }
+
         /* Scroll animations trigger */
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+            transform: translate3d(0, 30px, 0);
+            transition: transform 0.8s ease-out, opacity 0.8s ease-out;
         }
 
         .animate-on-scroll.animated {
             opacity: 1;
-            transform: translateY(0);
+            transform: translate3d(0, 0, 0);
         }
     </style>
 </head>
@@ -854,7 +916,7 @@
             <div class="method-card">
                 <div class="method-header">
                     <h3>Способ 1: Через личный кабинет партнера</h3>
-                    <div class="method-link">Ссылка на ЛК: <a href="https://partner.alfabank.ru" target="_blank">partner.alfabank.ru</a></div>
+                    <div class="method-link">Ссылка на ЛК: <a href="https://partner.alfabank.ru" target="_blank" rel="noopener noreferrer">partner.alfabank.ru</a></div>
                 </div>
                 <div class="method-warning">
                     <span class="warning-icon">⚠️</span>
@@ -890,7 +952,7 @@
                     </div>
                 </div>
                 <div class="method-image">
-                    <img src="https://mariaefimovapro.ru/wp-content/uploads/2025/06/lk-screenshot.jpg" alt="Личный кабинет партнера">
+                    <img src="https://mariaefimovapro.ru/wp-content/uploads/2025/06/lk-screenshot.jpg" alt="Личный кабинет партнера" loading="lazy">
                 </div>
                 <div class="sla-info">
                     <p><strong>SLA звонка менеджера банка:</strong> в ближайшее время в течение дня*</p>
@@ -931,7 +993,7 @@
                     </div>
                 </div>
                 <div class="method-image">
-                    <img src="images/referral-screenshot.jpg" alt="Реферальная ссылка">
+                    <img src="https://mariaefimovapro.ru/wp-content/uploads/2025/06/referral-screenshot.jpg" alt="Реферальная ссылка" loading="lazy">
                 </div>
                 <div class="sla-info">
                     <p><strong>SLA звонка менеджера банка:</strong> в ближайшее время в течение дня*</p>
@@ -968,38 +1030,38 @@
             <h2 class="section-title" style="color: white;">Частые вопросы и возражения</h2>
             <div class="faq-container">
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
+                    <button class="faq-question" onclick="toggleFAQ(this)" aria-expanded="false" aria-controls="faq-answer-1">
                         <span>Не хочу платить за обслуживание счета</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
+                        <span class="faq-icon" aria-hidden="true">▼</span>
+                    </button>
+                    <div class="faq-answer" id="faq-answer-1" aria-hidden="true">
                         Ваше желание избежать расходов на обслуживание счета вполне понятно и обосновано. Радует, что Альфа-Банк предусмотрел специальные тарифы с бесплатным обслуживанием, позволяющие не только избежать дополнительных расходов, но и насладиться приятным снижением стоимости наших услуг.
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
+                    <button class="faq-question" onclick="toggleFAQ(this)" aria-expanded="false" aria-controls="faq-answer-2">
                         <span>У меня есть счет в другом банке</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
+                        <span class="faq-icon" aria-hidden="true">▼</span>
+                    </button>
+                    <div class="faq-answer" id="faq-answer-2" aria-hidden="true">
                         Понимаю вашу позицию, ведь смена банка — это ответственный шаг. Однако, наличие резервного счёта в Альфа-Банке является важным элементом защиты вашего бизнеса от неожиданных ситуаций, связанных с рисками блокировки счетов по 115-ФЗ. К тому же, счёт в Альфа-Банке даёт уникальную возможность получить приятные бонусы, такие как снижение стоимости за видеонаблюдения.
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
+                    <button class="faq-question" onclick="toggleFAQ(this)" aria-expanded="false" aria-controls="faq-answer-3">
                         <span>Боюсь скрытых условий в кредитовании</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
+                        <span class="faq-icon" aria-hidden="true">▼</span>
+                    </button>
+                    <div class="faq-answer" id="faq-answer-3" aria-hidden="true">
                         В наше время вести, а главное развивать и расширять бизнес без дополнительного финансирования практически невозможно. И самое главное в этом вопросе, выбрать надежного партнёра, каким и является Альфа-Банк. Мы с большой ответственностью относимся к выбору партнёров, так как на кону наша репутация в глазах клиентов. Именно поэтому, после долгого анализа рынка, наш выбор был сделан в пользу одного из крупнейших банков нашей страны с прозрачными и выгодными условиями для клиентов.
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
+                    <button class="faq-question" onclick="toggleFAQ(this)" aria-expanded="false" aria-controls="faq-answer-4">
                         <span>Меня не устраивает процентная ставка</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
+                        <span class="faq-icon" aria-hidden="true">▼</span>
+                    </button>
+                    <div class="faq-answer" id="faq-answer-4" aria-hidden="true">
                         Понимаю, что на первый взгляд, ставка кажется весьма внушительной. При этом важно обратить ваше внимание на то, что ставка формируется согласно нескольким параметрам: ключевая ставка ЦБ РФ и результат анализа бизнеса клиента. Согласно этим параметрам, наш партнер, предлагает вам лучшие условия финансирования на рынке!
                     </div>
                 </div>
@@ -1017,14 +1079,36 @@
     </section>
 
     <script>
-        // FAQ Toggle
+        // FAQ Toggle с улучшенной accessibility
         function toggleFAQ(element) {
             const answer = element.nextElementSibling;
             const icon = element.querySelector('.faq-icon');
+            const isExpanded = element.getAttribute('aria-expanded') === 'true';
             
+            // Toggle states
+            element.setAttribute('aria-expanded', !isExpanded);
+            answer.setAttribute('aria-hidden', isExpanded);
             answer.classList.toggle('active');
             icon.classList.toggle('active');
+            
+            // Smooth height animation
+            if (!isExpanded) {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            } else {
+                answer.style.maxHeight = '0';
+            }
         }
+
+        // Обработка ошибок для изображений
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2YwZjBmMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM5OTkiPtCY0LfQvtCx0YDQsNC20LXQvdC40LUg0L3QtdC00L7RgdGC0YPQv9C90L48L3RleHQ+PC9zdmc+';
+                    this.alt = 'Изображение недоступно';
+                });
+            });
+        });
 
         // Scroll animations
         const observerOptions = {
