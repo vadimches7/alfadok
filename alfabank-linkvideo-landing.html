@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Партнерская программа Альфа-Банк × LinkVideo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #EF3124;
+            --dark-bg: #1A1A1A;
+            --light-gray: #F5F5F5;
+            --text-dark: #333333;
+            --accent-yellow: #FFD700;
+            --gradient-red: linear-gradient(135deg, #EF3124 0%, #FF6B6B 100%);
+            --gradient-dark: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Анимации */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(239,49,36,0.1) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            background: white;
+            padding: 20px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: translateY(-5px);
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gradient-red);
+            color: white;
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(239,49,36,0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(239,49,36,0.5);
+        }
+
+        /* Steps Section */
+        .steps-section {
+            padding: 100px 0;
+            background: var(--light-gray);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 60px;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--primary-red);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .step-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .step-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .step-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-red);
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .step-description {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .benefit-card {
+            background: var(--gradient-dark);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: slideInLeft 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .benefit-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .benefit-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .benefit-card:hover::after {
+            transform: rotate(90deg);
+        }
+
+        .benefit-card:hover {
+            transform: scale(1.05);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .benefit-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .benefit-list {
+            list-style: none;
+        }
+
+        .benefit-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .benefit-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-yellow);
+            font-weight: bold;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 100px 0;
+            background: var(--light-gray);
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-header {
+            background: var(--gradient-red);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .product-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .product-content {
+            padding: 30px;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .product-features li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            color: var(--primary-red);
+            font-size: 1.2rem;
+        }
+
+        /* Script Section */
+        .script-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        /* Application Section */
+        .application-section {
+            padding: 100px 0;
+            background: var(--light-gray);
+        }
+
+        .method-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .method-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .method-header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 20px;
+        }
+
+        .method-header h3 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .method-link {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .method-link a {
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+
+        .method-warning {
+            background: #FFF3CD;
+            border: 1px solid #FFEAA7;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .warning-icon {
+            font-size: 1.5rem;
+            color: #F39C12;
+        }
+
+        .method-subtitle {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 4px solid var(--primary-red);
+        }
+
+        .method-steps {
+            margin-bottom: 30px;
+        }
+
+        .method-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            gap: 20px;
+        }
+
+        .step-num {
+            background: var(--gradient-red);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        .step-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .method-image {
+            margin: 30px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .method-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .sla-info {
+            background: #E8F4FD;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .sla-info p {
+            margin: 0;
+            color: #1976D2;
+            font-weight: 500;
+        }
+
+        .sla-note {
+            font-size: 0.9rem;
+            margin-top: 5px !important;
+            opacity: 0.8;
+        }
+
+        /* Script Section */
+        .script-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .script-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .script-card {
+            background: var(--light-gray);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary-red);
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .script-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .script-role {
+            font-weight: bold;
+            color: var(--primary-red);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .script-text {
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background: var(--gradient-dark);
+            color: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .faq-question {
+            background: rgba(255,255,255,0.1);
+            padding: 20px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .faq-question:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .faq-answer {
+            padding: 20px 30px;
+            display: none;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .faq-answer.active {
+            display: block;
+            animation: fadeInUp 0.3s ease-out;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon.active {
+            transform: rotate(180deg);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--gradient-red);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .cta-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease-out;
+            animation-delay: 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .cta-button-white {
+            background: white;
+            color: var(--primary-red);
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .cta-button-white:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 20px;
+            }
+
+            .steps-container,
+            .benefits-grid,
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .method-card {
+                padding: 20px;
+            }
+
+            .method-step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-content {
+                text-align: left;
+            }
+        }
+
+        /* Scroll animations trigger */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="logo-container">
+                    <div class="logo">
+                        <span style="color: var(--primary-red); font-size: 2rem; font-weight: bold;">Альфа-Банк</span>
+                    </div>
+                    <span style="font-size: 2rem;">×</span>
+                    <div class="logo">
+                        <span style="color: #333; font-size: 2rem; font-weight: bold;">LinkVideo</span>
+                    </div>
+                </div>
+                <h1>Зарабатывайте вместе с Альфа-Банком</h1>
+                <p class="hero-subtitle">Партнерская программа по привлечению клиентов для вашего бизнеса</p>
+                <a href="#start" class="cta-button" style="margin-right: 20px;">Начать зарабатывать</a>
+                <a href="#application" class="cta-button" style="background: rgba(255,255,255,0.2); border: 2px solid white;">Как отправить заявку</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="steps-section" id="start">
+        <div class="container">
+            <h2 class="section-title">Как это работает?</h2>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Проверьте клиента</h3>
+                    <p class="step-description">Уточните ИНН компании и проверьте наличие открытого счета в Альфа-Банке. Это займет всего минуту!</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Предложите открыть счет</h3>
+                    <p class="step-description">Если счета нет — предложите открыть расчетный счет (РКО) в Альфа-Банке с выгодными условиями</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Предложите финансирование</h3>
+                    <p class="step-description">Если счет уже открыт — расскажите о возможностях кредитования для развития бизнеса</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Выгодные предложения для клиентов LinkVideo</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💳</div>
+                    <h3 class="benefit-title">Открытие РКО</h3>
+                    <ul class="benefit-list">
+                        <li>1 месяц бесплатного обслуживания</li>
+                        <li>Экономия до 500 рублей на абонентской плате</li>
+                        <li>Оплата услуг LinkVideo прямо со счета</li>
+                        <li>Быстрое открытие онлайн</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3 class="benefit-title">Кредит для бизнеса</h3>
+                    <ul class="benefit-list">
+                        <li>Специальный бонус — скидка до 1%</li>
+                        <li>Сумма от 300 тыс. до 150 млн ₽</li>
+                        <li>Быстрое решение по заявке</li>
+                        <li>Удобные условия погашения</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Продукты Альфа-Банка для вашего бизнеса</h2>
+            <div class="products-container">
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>Расчетный счет</h3>
+                        <p>Для ИП и ООО</p>
+                    </div>
+                    <div class="product-content">
+                        <ul class="product-features">
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span><strong>Бесплатно</strong> — открытие и обслуживание</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span><strong>100% кэшбэк</strong> на старте</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span><strong>До 10%</strong> кэшбэк за расходы по карте</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span><strong>До 2 млн ₽</strong> переводы без комиссии</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>Кредитные продукты</h3>
+                        <p>14 видов финансирования</p>
+                    </div>
+                    <div class="product-content">
+                        <ul class="product-features">
+                            <li>
+                                <span class="feature-icon">💳</span>
+                                <span><strong>Кредитная линия</strong> — до 50 млн ₽</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">📈</span>
+                                <span><strong>Овердрафт</strong> — до 20 млн ₽</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">🏦</span>
+                                <span><strong>Бизнес-кредит</strong> — до 150 млн ₽</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">%</span>
+                                <span><strong>Скидка до 5%</strong> на ставку</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Send Application Section -->
+    <section class="application-section" id="application">
+        <div class="container">
+            <h2 class="section-title">Как отправить заявку в банк</h2>
+            
+            <!-- Method 1: Personal Cabinet -->
+            <div class="method-card">
+                <div class="method-header">
+                    <h3>Способ 1: Через личный кабинет партнера</h3>
+                    <div class="method-link">Ссылка на ЛК: <a href="https://partner.alfabank.ru" target="_blank">partner.alfabank.ru</a></div>
+                </div>
+                <div class="method-warning">
+                    <span class="warning-icon">⚠️</span>
+                    <span>ВАЖНО!!! Перед отправкой заявки в банк, необходимо получить согласие клиента</span>
+                </div>
+                <div class="method-steps">
+                    <div class="method-step">
+                        <div class="step-num">01</div>
+                        <div class="step-content">
+                            <h4>Заполнить обязательные поля:</h4>
+                            <p>ИНН/Название компании, номер телефона, город обслуживания</p>
+                        </div>
+                    </div>
+                    <div class="method-step">
+                        <div class="step-num">02</div>
+                        <div class="step-content">
+                            <h4>Выбрать в поле «Продукты в заявке»</h4>
+                            <p>Бизнес-кредит</p>
+                        </div>
+                    </div>
+                    <div class="method-step">
+                        <div class="step-num">03</div>
+                        <div class="step-content">
+                            <h4>В поле продукт для подключения</h4>
+                            <p>необходимо проставить галочку Бизнес Кредит</p>
+                        </div>
+                    </div>
+                    <div class="method-step">
+                        <div class="step-num">04</div>
+                        <div class="step-content">
+                            <h4>Отправить в Банк</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="method-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'%3E%3Crect fill='%23f5f5f5' width='800' height='500'/%3E%3Crect fill='%23fff' x='50' y='50' width='700' height='400' rx='10'/%3E%3Ctext x='400' y='250' text-anchor='middle' font-family='Arial' font-size='24' fill='%23999'%3EСкриншот личного кабинета%3C/text%3E%3C/svg%3E" alt="Личный кабинет партнера">
+                </div>
+                <div class="sla-info">
+                    <p><strong>SLA звонка менеджера банка:</strong> в ближайшее время в течение дня*</p>
+                    <p class="sla-note">* SLA зависит от времени подачи заявки</p>
+                </div>
+            </div>
+
+            <!-- Method 2: Referral Link -->
+            <div class="method-card">
+                <div class="method-header">
+                    <h3>Способ 2: Реферальная ссылка</h3>
+                </div>
+                <div class="method-warning">
+                    <span class="warning-icon">⚠️</span>
+                    <span>ВАЖНО!!! Перед отправкой заявки в банк, необходимо получить согласие клиента</span>
+                </div>
+                <div class="method-subtitle">Реферальная ссылка</div>
+                <div class="method-steps">
+                    <div class="method-step">
+                        <div class="step-num">01</div>
+                        <div class="step-content">
+                            <h4>Ввести номер телефона клиента.</h4>
+                            <p>Попросить клиента озвучить код из смс. Ввести код в поле для заполнения</p>
+                        </div>
+                    </div>
+                    <div class="method-step">
+                        <div class="step-num">02</div>
+                        <div class="step-content">
+                            <h4>Ввести наименование или ИНН компании.</h4>
+                            <p>Указать фактический вид деятельности из (выпадающего списка)</p>
+                        </div>
+                    </div>
+                    <div class="method-step">
+                        <div class="step-num">03</div>
+                        <div class="step-content">
+                            <h4>Отправить в Банк</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="method-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'%3E%3Crect fill='%23333' width='800' height='500'/%3E%3Crect fill='%23fff' x='50' y='150' width='700' height='300' rx='10'/%3E%3Ctext x='400' y='300' text-anchor='middle' font-family='Arial' font-size='24' fill='%23999'%3EСтраница реферальной ссылки%3C/text%3E%3C/svg%3E" alt="Реферальная ссылка">
+                </div>
+                <div class="sla-info">
+                    <p><strong>SLA звонка менеджера банка:</strong> в ближайшее время в течение дня*</p>
+                    <p class="sla-note">* SLA зависит от времени подачи заявки</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Script Section -->
+    <section class="script-section">
+        <div class="container">
+            <h2 class="section-title">Готовые скрипты для работы</h2>
+            <div class="script-container">
+                <div class="script-card">
+                    <div class="script-role">Для нового клиента:</div>
+                    <div class="script-text">
+                        "ИО, предлагаю вам отличный способ уменьшить затраты на видеонаблюдение. При открытии счёта у нашего банка-партнера Альфа-Банка, вы сразу получаете целый месяц бесплатного обслуживания видеонаблюдения. Плюс, оплачивая наши услуги с этого счёта, вы экономите ещё до 500 рублей в месяц. Давайте я передам ваши контактные данные менеджеру Банка? Он с вами свяжется и подберет наиболее подходящее и выгодное предложение для вашего бизнеса. Согласны?"
+                    </div>
+                </div>
+                <div class="script-card">
+                    <div class="script-role">Для существующего клиента банка:</div>
+                    <div class="script-text">
+                        "ИО, у нас есть отличная возможность поддержать развитие вашего бизнеса. Оформляя кредит для бизнеса через нашего банка-партнёра Альфа-Банк, вы получаете приятный бонус: возврат до 1% от общей суммы кредита, который можно направить на оплату услуг «ЛинкВидео». Таким образом, вы снижаете затраты на видеонаблюдение и используете освободившиеся средства на нужды вашего дела. Давайте передам ваши контактные данные менеджеру Банка? Он с вами свяжется в кратчайшие сроки и подберёт для вас предложение, которое лучшим образом решит ваши вопросы. Согласны?"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Частые вопросы и возражения</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Не хочу платить за обслуживание счета</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Ваше желание избежать расходов на обслуживание счета вполне понятно и обосновано. Радует, что Альфа-Банк предусмотрел специальные тарифы с бесплатным обслуживанием, позволяющие не только избежать дополнительных расходов, но и насладиться приятным снижением стоимости наших услуг.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>У меня есть счет в другом банке</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Понимаю вашу позицию, ведь смена банка — это ответственный шаг. Однако, наличие резервного счёта в Альфа-Банке является важным элементом защиты вашего бизнеса от неожиданных ситуаций, связанных с рисками блокировки счетов по 115-ФЗ. К тому же, счёт в Альфа-Банке даёт уникальную возможность получить приятные бонусы, такие как снижение стоимости за видеонаблюдения.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Боюсь скрытых условий в кредитовании</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        В наше время вести, а главное развивать и расширять бизнес без дополнительного финансирования практически невозможно. И самое главное в этом вопросе, выбрать надежного партнёра, каким и является Альфа-Банк. Мы с большой ответственностью относимся к выбору партнёров, так как на кону наша репутация в глазах клиентов. Именно поэтому, после долгого анализа рынка, наш выбор был сделан в пользу одного из крупнейших банков нашей страны с прозрачными и выгодными условиями для клиентов.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Меня не устраивает процентная ставка</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Понимаю, что на первый взгляд, ставка кажется весьма внушительной. При этом важно обратить ваше внимание на то, что ставка формируется согласно нескольким параметрам: ключевая ставка ЦБ РФ и результат анализа бизнеса клиента. Согласно этим параметрам, наш партнер, предлагает вам лучшие условия финансирования на рынке!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Развивайте своего клиента вместе с Альфа-Банком</h2>
+            <p class="cta-subtitle">Начните зарабатывать уже сегодня!</p>
+            <a href="#application" class="cta-button-white">Стать партнером</a>
+        </div>
+    </section>
+
+    <script>
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('.faq-icon');
+            
+            answer.classList.toggle('active');
+            icon.classList.toggle('active');
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.step-card, .benefit-card, .product-card, .script-card, .faq-item, .method-card');
+            animatedElements.forEach(el => {
+                el.classList.add('animate-on-scroll');
+                observer.observe(el);
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
